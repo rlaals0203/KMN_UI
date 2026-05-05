@@ -1,0 +1,16 @@
+{
+    "name": "KMN.UI.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c455e38fa3e44c646aba49171eb8baa9"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

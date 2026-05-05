@@ -1,0 +1,58 @@
+﻿using System;
+using KMN.UI.ContextMenu;
+using KMN.UI.Core;
+using KMN.UI.Popup;
+using UnityEngine;
+
+namespace KMN.UI.Interaction
+{
+    [RequireComponent(typeof(UIEventHandler))]
+    public class InteractableUI : UIBase
+    {
+        public UIEventHandler EventHandler { get; private set; }
+
+        protected override void Awake()
+        {
+            base.Awake();
+            EventHandler = GetComponent<UIEventHandler>();
+        }
+
+        protected override void OnDestroy()
+        {
+            ClearInteractEvents();
+            base.OnDestroy();
+        }
+
+        protected void BindTooltip<T>(Func<T> data, float duration = 0f)
+        {
+            OverlayUIManager.Instance?.BindTooltip(this, data, duration);
+        }
+
+        protected void UnbindTooltip()
+        {
+            OverlayUIManager.Instance?.UnbindTooltip(this);
+        }
+        
+        protected void BindContextMenu<T>(ContextMenuSO menu, Func<T> data)
+        {
+            OverlayUIManager.Instance?.BindContextMenu(this, menu, data);
+        }
+
+        protected void UnBindContextMenu()
+        {
+            OverlayUIManager.Instance?.UnbindContextMenu(this);
+        }
+        
+        protected void BindPopup(IPopupProvider iPopupProvider)
+        {
+            OverlayUIManager.Instance?.BindPopup(iPopupProvider);
+        }
+        
+        protected void UnBindPopup(IPopupProvider iPopupProvider)
+        {
+            OverlayUIManager.Instance?.UnbindPopup(iPopupProvider);
+        }
+
+        protected virtual void ClearInteractEvents() { }
+    }
+}
